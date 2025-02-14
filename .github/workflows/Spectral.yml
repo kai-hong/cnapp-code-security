@@ -1,24 +1,18 @@
-name: Spectral Scan
-
+name: Main
 on:
   push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
+    branches: [ main ]
 
+env:
+  SPECTRAL_DSN: ${{ secrets.SPECTRAL_DSN }}
+  
 jobs:
-  spectral_scan:
-    runs-on: windows-latest
+  scan:
+    runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-
-      - name: Download Spectral
-        run: |
-          Invoke-WebRequest -Uri "https://spectralops.io/latest/windows/spectral.exe" -OutFile "spectral.exe"
-
-      - name: Run Spectral Scan
-        run: |
-          ./spectral.exe github -k repo -t ${{ secrets.CNAPP_CODE_TEST }} kai-hong/cnapp-code-security --dsn https://spu-1eaa9cc8751e4979b6898e1d32a61594@spectral-us.checkpoint.com --include-tags base,audit
+    - uses: actions/checkout@v2
+    - name: Install and run Spectral CI
+        uses: spectralops/spectral-github-action@v2
+        with:
+          spectral-dsn: ${{ env.SPECTRAL_DSN }}
+          spectral-args: scan --ok
