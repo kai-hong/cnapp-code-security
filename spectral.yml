@@ -21,4 +21,4 @@ jobs:
 
       - name: Run Spectral Scan
         run: |
-          ./spectral.exe github -k repo -t ${{ secrets.GITHUB_TOKEN }} your-username/your-repo --dsn https://spu-*************@spectral-us.checkpoint.com --include-tags base,audit
+          ./spectral.exe github -k repo -t ${{ secrets.CNAPP_CODE_TEST }} kai-hong/cnapp-code-security --dsn https://spu-1eaa9cc8751e4979b6898e1d32a61594@spectral-us.checkpoint.com --include-tags base,audit
