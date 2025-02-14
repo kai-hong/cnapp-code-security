@@ -5,7 +5,7 @@ on:
     branches: [ main ]
 
 env:
-  SPECTRAL_DSN: ${{ secrets.https://spu-1eaa9cc8751e4979b6898e1d32a61594@spectral-us.checkpoint.com }}
+  SPECTRAL_DSN: ${{ secrets.CNAPP_CODE_TEST }}
 
 jobs:
   scan:
