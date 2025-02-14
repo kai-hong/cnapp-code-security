@@ -1,18 +1,25 @@
-name: Main
+name: Spectral Security Scan
+
 on:
   push:
     branches: [ main ]
 
 env:
-  SPECTRAL_DSN: ${{ secrets.https://spu-1eaa9cc8751e4979b6898e1d32a61594@spectral-us.checkpoint.com }}
-  
+  SPECTRAL_DSN: ${{ secrets.SPECTRAL_DSN }}
+
 jobs:
   scan:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: Install and run Spectral CI
-        uses: kai-hong/cnapp-code-security/.github/workflows/Spectral.yml
-        with:
-          spectral-dsn: ${{ env.https://spu-1eaa9cc8751e4979b6898e1d32a61594@spectral-us.checkpoint.com }}
-          spectral-args: scan --ok
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Install Spectral CLI
+      run: |
+        curl -L "https://spu-1eaa9cc8751e4979b6898e1d32a61594@spectral-us.checkpoint.com" -o spectral
+        chmod +x spectral
+        sudo mv spectral /usr/local/bin/
+
+    - name: Run Spectral Security Scan
+      run: spectral scan --dsn $SPECTRAL_DSN --ok
+
