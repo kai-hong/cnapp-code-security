@@ -18,7 +18,7 @@ jobs:
       run: |
         curl -L "https://spectralops.io/latest/linux/spectral" -o spectral
         chmod +x spectral
-        sudo mv spectral /usr/local/bin/
+        sudo mv spectral /kai-hong/cnapp-code-security/
 
     - name: Run Spectral Security Scan
       run: spectral scan --dsn $SPECTRAL_DSN --ok
