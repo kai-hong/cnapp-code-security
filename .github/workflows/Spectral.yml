@@ -16,7 +16,7 @@ jobs:
 
     - name: Install Spectral CLI
       run: |
-        curl -L "https://spu-1eaa9cc8751e4979b6898e1d32a61594@spectral-us.checkpoint.com" -o spectral
+        curl -L "https://spectralops.io/latest/linux/spectral" -o spectral
         chmod +x spectral
         sudo mv spectral /usr/local/bin/
 
