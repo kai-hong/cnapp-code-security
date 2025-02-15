@@ -1,9 +1,8 @@
 name: Spectral Security Scan
-
 on:
   push:
     branches: [ main ]
-
+    
 env:
   SPECTRAL_DSN: ${{ secrets.CNAPP_CODE_TEST }}
 
@@ -11,15 +10,9 @@ jobs:
   scan:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
-
-    - name: Install Spectral CLI
-      run: |
-        curl -L "https://spectralops.io/latest/linux/spectral" -o spectral
-        chmod +x spectral
-        sudo mv spectral /kai-hong/cnapp-code-security/
-
-    - name: Run Spectral Security Scan
-      run: spectral scan --dsn $SPECTRAL_DSN --ok
-
+    - uses: actions/checkout@v3
+    - name: Install and run Spectral CI
+      uses: checkpointsw/spectral-github-action@v3
+      with:
+        spectral-dsn: ${{ env.SPECTRAL_DSN }}
+        spectral-args: scan --ok  --include-tags base,audit
