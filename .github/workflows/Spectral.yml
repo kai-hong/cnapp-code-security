@@ -11,12 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-    - name: Install and run Spectral CI
-
-    - name: Debugging - List Files
-    - run: ls -R  # 列出所有檔案，確保 test.py 存在
-    
+    - name: Install and run Spectral CI    
       uses: checkpointsw/spectral-github-action@v3
       with:
         spectral-dsn: ${{ env.SPECTRAL_DSN }}
-        spectral-args: scan --ok  --include-tags base,audit --include-patterns "**/*.py"
+        spectral-args: scan --ok  --engines secrets,iac,oss --include-tags base,audit,iac --include-patterns "**/*.py"
