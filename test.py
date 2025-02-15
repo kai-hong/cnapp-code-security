@@ -1,6 +1,6 @@
 import os
 import requests
-import boto3  # Open Source library example (AWS SDK)
+import boto3  # Open Source library example (AWS SDK) 1
 
 # ==============================
 # 🚨 [Secrets] 硬編碼 API 金鑰
