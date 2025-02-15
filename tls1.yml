@@ -1,0 +1,19 @@
+name: Insecure CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  insecure_tls:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Install curl (if not installed)
+        run: sudo apt-get install -y curl
+
+      - name: Use TLS 1.0 for insecure request ❌
+        run: curl --tlsv1.0 https://example.com   # ⚠️ 這行使用 TLS 1.0，會觸發 Spectral 掃描
