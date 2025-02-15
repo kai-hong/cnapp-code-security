@@ -98,7 +98,7 @@ if __name__ == "__main__":
 # 定义 API 请求 URL 和站点 ID
 url = "https://api.mist.com/api/v1/sites/{site_id}/psks"
 site_id = "6f80f028-5ce1-49f6-adfc-ba0ac4b04ff4"
-api_token = "8BV1nH6vq2mfzmgTzkWr9PUekMxTxjR6kE4UlTm94qbdSaZ6EvLvWFWJDISrrxeOchUnceavvb8Z8PidtiVJZvuEuVgjvMno"  # 替换为您的实际 API Token
+api_token = "8BV1nH6vq2mfzmgTzkWr9PUekMxTxjR6kE4UlTm94qbdSaZ6EvLvWFWJDISrrxeOchUnceavvb8Z8PidtiVJZvuEuVgjv"  # 替换为您的实际 API Token
 
 # 定義要生成的 PSK 數量
 psk_count = 5
